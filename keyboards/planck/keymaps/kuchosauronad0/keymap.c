@@ -45,16 +45,16 @@ enum planck_keycodes {
 //#define ALT_HASH MACROTAP(M_ALT_HASH)
 //#define GR_DASH MACROTAP(M_GR_DASH)
 
-//enum unicode_names {
-//  BANG,
-//  IRONY,
-//  SNEK,
-//};
-//const uint32_t PROGMEM unicode_map[] = {
-//  [BANG]    = 0x203D,  // ‽
-//  [IRONY]   = 0x2E2E,  // ⸮
-//  [SNEK]    = 0x1F40D, // 🐍
-//};
+enum unicode_names {
+  BANG,
+  IRONY,
+  SNEK,
+};
+const uint32_t PROGMEM unicode_map[] = {
+  [BANG]    = 0x203D,  // ‽
+  [IRONY]   = 0x2E2E,  // ⸮
+  [SNEK]    = 0x1F40D, // 🐍
+};
 
 /* 
  * Tap Dance Declarations
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, KC_LALT, _______,  KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
-/* Colemak
+/* Colemak 
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
@@ -135,72 +135,72 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
+ * | Del  |      |      |      |      |      |      |   _  |   +  |   {  |   }  |  |   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Ins  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
+ * | Ins  |      |      |      |      |      |      |ISO ~ |ISO | | Home | End  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |S(Ins)| tmux |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
-    KC_INS, KC_7,   KC_8,   KC_9,   KC_0,  KC_F1,  KC_F2,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
-    S(KC_INS), LCTL(KC_B), _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
+    KC_DEL, _______, _______, _______, _______, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
+    KC_INS, _______, _______, _______, _______, _______, _______,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END, _______,
+    S(KC_INS), LCTL(KC_B), _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+ * | Del  |      |      |      |      |      |      |   -  |   =  |   [  |   ]  |  \   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Ins  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+ * | Ins  |      |      |      |      |      |      |ISO # |ISO / |Pg Up |Pg Dn |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |S(Ins)|      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-    KC_INS, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
+    KC_DEL, _______, _______, _______, _______, _______, _______,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
+    KC_INS, _______, _______, _______, _______, _______, _______,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
     S(KC_INS), _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Numpad layer
  * ,-----------------------------------------------------------------------------------.
- * | TEST |TGLTES|      |      |      |      |      |      |  7   |  8   |  9   | Bkspc|
+ * | TEST |TGLTES|      |      |      |      |      |Delete|  7   |  8   |  9   | Bkspc|
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |  4   |  5   |   6  | Del  |
+ * |SNEK  |      |      |      |      |      |      |      |  4   |  5   |   6  |   .  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |  0   |  1   |  2   |   3  | Enter|
+ * |BANG  |      |      |      |      |      |      |  0   |  1   |  2   |   3  | Enter|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Exit |      |      |      |      |             |      |      |      |      |  .   |
+ * | Exit |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_NUMPAD] = LAYOUT_planck_grid(
-    TEST, TGL_TEST, _______, _______, _______, _______, _______,  _______, KC_7, KC_8, KC_9, KC_BSPACE,
-    _______, _______, _______, _______, _______, _______, _______,  _______, KC_4, KC_5, KC_6, KC_DELETE,
-    _______, _______, _______, _______, _______, _______, _______, KC_0, KC_1, KC_2, KC_3, KC_ENTER,
-    EXT_NUMPAD, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DOT
+    TEST, TGL_TEST, _______, _______, _______, _______, _______,  KC_DEL, KC_7, KC_8, KC_9, KC_BSPACE,
+    X(SNEK), _______, _______, _______, _______, _______, _______,  _______, KC_4, KC_5, KC_6, KC_DOT,
+    X(BANG), _______, _______, _______, _______, _______, _______, KC_0, KC_1, KC_2, KC_3, KC_ENTER,
+    EXT_NUMPAD, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |      | Reset|      |      |      |      |      |      |      |      |      |  Del |
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 | F12  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |QWERTY|      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|      |Numpad|
+ * |QWERTY|      |MUSIC |Aud on|AGnorm|      |      |      |      |      |      |TRM_ON|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |COLEMAK|     |      |      |      |      |      |      |      |      |      |      |
+ * |COLEMAK|     |      |Audoff|AGswap|      |      |      |      |      |      |TRM_OF|
  * +------+------+------+------+------+------+------+------+------+------+------+------|
- * |DVORAK|      |      |      |      |             |      |      |      |      |      |
+ * |DVORAK|NUMPAD|      |      |      |             |      |      |      | DEBUG| RESET|
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    _______, RESET, DEBUG, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL,
-    QWERTY, _______, MU_MOD, AU_ON, AU_OFF, AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK, _______, NUMPAD,
-    COLEMAK, _______, _______, _______, _______, _______, _______, TERM_ON, TERM_OFF, _______, _______, _______,
-    DVORAK, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    KC_F1,  KC_F2,   KC_F3,  KC_F4, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+    QWERTY, _______, MU_MOD, AU_ON, AG_NORM, _______, _______, _______, _______, _______, _______, TERM_ON,
+    COLEMAK, _______, _______, AU_OFF, AG_SWAP, _______, _______, _______, _______, _______, _______, TERM_OFF,
+    DVORAK, NUMPAD, _______, _______, _______, _______, _______, _______, _______, _______, DEBUG, RESET
 )
 
 
@@ -222,13 +222,11 @@ void toggledip(void){
 
 void chk_dip(bool dip1){
       if (dip1) {
-          KC_1;
-           // register_code(KC_1);
-           // unregister_code(KC_1);
+            register_code(KC_1);
+            unregister_code(KC_1);
       } else {
-           KC_2;
-           // register_code(KC_2);
-           // unregister_code(KC_2);
+            register_code(KC_2);
+            unregister_code(KC_2);
       }
 }
 
@@ -304,11 +302,15 @@ void encoder_update_user(uint8_t index, bool clockwise) {
     }
     else if (index == 1) {
       if (clockwise) {
-          register_code(KC_PGDN);
-          unregister_code(KC_PGDN);
+            register_code(KC_RGHT);
+            unregister_code(KC_RGHT);
+//          register_code(KC_PGDN);
+//          unregister_code(KC_PGDN);
       } else {
-          register_code(KC_PGUP);
-          unregister_code(KC_PGUP);
+            register_code(KC_LEFT);
+            unregister_code(KC_LEFT);
+//          register_code(KC_PGUP);
+//          unregister_code(KC_PGUP);
       }
     }
 }
@@ -317,7 +319,9 @@ void dip_update(uint8_t index, bool active) {
   switch (index) {
     case 0:
       if (active) {
+          set_unicode_input_mode(UC_LNX);
       } else {
+          set_unicode_input_mode(UC_WIN);
       }
     case 1:
       if (active) {
@@ -342,8 +346,9 @@ void dip_update(uint8_t index, bool active) {
 //  #endif
 //}
 
-//void matrix_init_user(void) {
-//};
+void matrix_init_user(void) {
+    set_unicode_input_mode(UC_LNX);
+};
 
 //void eeconfig_init_user(void) {
 //      set_unicode_input_mode(UC_LNX);

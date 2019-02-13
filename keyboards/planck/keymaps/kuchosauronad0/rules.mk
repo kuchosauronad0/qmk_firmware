@@ -1,2 +1,3 @@
 EECONFIG_DISABLE = yes
+UNICODEMAP_ENABLE = yes
 SRC += muse.c
