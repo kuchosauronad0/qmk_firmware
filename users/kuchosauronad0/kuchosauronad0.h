@@ -20,6 +20,9 @@
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
 #  include "rgblight_user.h"
 #endif
+#if defined(OLED_DRIVER_ENABLE)
+#    include "oled_user.h"
+#endif
 
 #if defined(UNICODEMAP_ENABLE) || defined(UNICODE_ENABLE)
 #  include "unicode.h"
